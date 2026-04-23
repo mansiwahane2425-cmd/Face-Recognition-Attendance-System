@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="hero">
+    <h2>Capturing Face Data</h2>
+    <p>Please look directly at the camera. Capturing 10 samples for <strong>{{ name }}</strong>.</p>
+</div>
+
+<div class="video-container">
+    <img src="{{ url_for('video_feed_register', name=name, roll=roll, student_id=student_id) }}" alt="Webcam Feed">
+</div>
+
+<div style="text-align: center; margin-top: 2rem;">
+    <p style="opacity: 0.7; margin-bottom: 1rem;">The system will automatically redirect once capture is complete.</p>
+    <a href="{{ url_for('train') }}" class="btn btn-primary">Done & Train Model</a>
+</div>
+
+<script>
+    // Logic to redirect after some time if needed, but the "Done" button is safer
+</script>
+{% endblock %}

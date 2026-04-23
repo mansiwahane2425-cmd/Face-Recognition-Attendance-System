@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="hero">
+    <h2>Real-Time Recognition</h2>
+    <p>The system will automatically mark attendance for recognized faces.</p>
+</div>
+
+<div class="video-container">
+    <img src="{{ url_for('video_feed_attendance') }}" alt="Attendance Feed">
+</div>
+
+<div style="text-align: center; margin-top: 2rem;">
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Stop Camera</a>
+    <a href="{{ url_for('view_attendance') }}" class="btn btn-primary" style="background: var(--card-bg); margin-left: 1rem;">View Records</a>
+</div>
+{% endblock %}

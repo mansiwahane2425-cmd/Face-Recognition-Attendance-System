@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="hero">
+    <h2>Attendance Management <span>Simplified</span></h2>
+    <p>Efficient, accurate, and secure face recognition for your institution.</p>
+</div>
+
+<div class="grid">
+    <div class="card">
+        <i class="fas fa-user-plus"></i>
+        <h3>Registration</h3>
+        <p>Add new students to the system by capturing their facial biometric data.</p>
+        <a href="{{ url_for('register') }}" class="btn btn-primary">Add Student</a>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-id-badge"></i>
+        <h3>Mark Attendance</h3>
+        <p>Open the real-time recognition camera to automatically mark attendance.</p>
+        <a href="{{ url_for('attendance') }}" class="btn btn-primary">Launch Camera</a>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-file-invoice"></i>
+        <h3>View Records</h3>
+        <p>Access complete attendance history and export detailed reports.</p>
+        <a href="{{ url_for('view_attendance') }}" class="btn btn-primary">View History</a>
+    </div>
+</div>
+
+<div class="hero" style="margin-top: 5rem; margin-bottom: 2rem;">
+    <h2>Recent <span>Activity</span></h2>
+</div>
+
+<div class="card" style="padding: 1rem; max-width: 900px; margin: 0 auto;">
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Roll Number</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in recent_records %}
+            <tr>
+                <td><strong>{{ record[1] }}</strong></td>
+                <td>{{ record[2] }}</td>
+                <td>{{ record[3] }}</td>
+                <td>{{ record[4] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" style="text-align: center; padding: 2rem; opacity: 0.5;">No recent activity.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

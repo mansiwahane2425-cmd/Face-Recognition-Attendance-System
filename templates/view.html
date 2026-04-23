@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="hero">
+    <h2>Attendance Records</h2>
+    <p>Complete history of marked attendance.</p>
+</div>
+
+<div class="card" style="padding: 1rem;">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Roll Number</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record[0] }}</td>
+                <td><strong>{{ record[1] }}</strong></td>
+                <td>{{ record[2] }}</td>
+                <td>{{ record[3] }}</td>
+                <td>{{ record[4] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" style="text-align: center; padding: 3rem; opacity: 0.5;">No records found. Start marking attendance!</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div style="text-align: center; margin-top: 2rem; display: flex; justify-content: center; gap: 1rem;">
+    <a href="{{ url_for('index') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    <a href="{{ url_for('export_csv') }}" class="btn btn-primary" style="background: var(--success);"><i class="fas fa-file-csv"></i> Export to CSV</a>
+</div>
+{% endblock %}
